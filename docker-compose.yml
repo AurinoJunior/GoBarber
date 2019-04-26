@@ -9,6 +9,8 @@ services:
     volumes:
       - .:/usr/app
       - /usr/app/node_modules
+    links:
+      - postgres
 
   postgres:
     image: kartoza/postgis
