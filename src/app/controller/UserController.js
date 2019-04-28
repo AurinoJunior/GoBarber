@@ -6,7 +6,8 @@ class UserController {
   }
 
   async fetch(req, res) {
-    await User.create(req, res);
+    console.log(req.body);
+    // await User.create(req.body);
 
     return res.redirect("/");
   }
