@@ -11,12 +11,14 @@ services:
       - /usr/app/node_modules
     env_file: .env
     links:
-      - postgres
+      - postgre
     container_name: application
 
-  postgres:
+  postgre:
     image: kartoza/postgis
     env_file: .env
     ports:
       - "5432:5432"
-    container_name: dbpostgres
+    volumes:
+      - ./postgreSQL_data:/var/lib/postgresql
+    container_name: dbpostgre
