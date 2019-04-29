@@ -6,8 +6,9 @@ class UserController {
   }
 
   async fetch(req, res) {
-    console.log(req.body);
-    // await User.create(req.body);
+    // console.log(req.body);
+    req.body.avatar = "teste.jpg";
+    await User.create(req.body);
 
     return res.redirect("/");
   }
