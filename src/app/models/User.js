@@ -7,12 +7,13 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       avatar: DataTypes.STRING,
-      password: DataTypes.VIRTUAL,
+      password: DataTypes.VIRTUAL, // Campo visivel apenas no servidor
       password_hash: DataTypes.STRING,
-      providers: DataTypes.BOOLEAN
+      provider: DataTypes.BOOLEAN
     },
     {
-      hook: {
+      hooks: {
+        // Chamado nos inserts e updates
         beforeSave: async user => {
           if (user.password) {
             user.password_hash = await bcrypt.hash(user.password, 8);
