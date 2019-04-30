@@ -1,14 +1,10 @@
 const { User } = require("../models");
 
 class UserController {
-  create(req, res) {
-    return res.render("auth/signup");
-  }
+  async create(req, res) {
+    const { filename } = req.file;
 
-  async fetch(req, res) {
-    // console.log(req.body);
-    req.body.avatar = "teste.jpg";
-    await User.create(req.body);
+    await User.create({ ...req.body, avatar: filename });
 
     return res.redirect("/");
   }

@@ -1,3 +1,5 @@
 node_modules
 package-json.lock
 postgreSQL_data
+tmp/uploads/*
+!tmp/uploads/.gitkeep
