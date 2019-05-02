@@ -19,6 +19,7 @@ routes.post("/signin", SessionController.login);
 routes.post("/signup", upload.single("avatar"), UserController.create);
 
 routes.get("/app/dashboard", (req, res) => {
+  console.log(req.session.user);
   res.render("dashboard");
 });
 module.exports = routes;
