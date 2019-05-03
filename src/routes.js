@@ -23,8 +23,11 @@ routes.post("/signin", SessionController.login);
 //Protegendo todas as rotas que iniciam com /app
 routes.use('/app', authMiddleware);
 
+routes.get('/app/logout', SessionController.destroy)
+
 routes.get("/app/dashboard", (req, res) => {
   console.log(req.session.user);
   res.render("dashboard");
 });
+
 module.exports = routes;
