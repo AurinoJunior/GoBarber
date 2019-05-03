@@ -6,8 +6,8 @@ const routes = express.Router();
 
 const UserController = require("./app/controller/UserController");
 const SessionController = require("./app/controller/SessionController");
-const authMiddleware = require('./app/middlewares/auth');
-const guestMiddleware = require('./app/middlewares/guest');
+const authMiddleware = require("./app/middlewares/auth");
+const guestMiddleware = require("./app/middlewares/guest");
 
 routes.get("/", guestMiddleware, (req, res) => {
   return res.render("auth/signin");
@@ -20,11 +20,14 @@ routes.get("/signup", guestMiddleware, (req, res) => {
 routes.post("/signup", upload.single("avatar"), UserController.create);
 routes.post("/signin", SessionController.login);
 
-//Protegendo todas as rotas que iniciam com /app
-routes.use('/app', authMiddleware);
+// Protegendo todas as rotas que iniciam com /app so pode ser acessado se logado
+routes.use("/app", authMiddleware);
+
+routes.get("/app/logout", SessionController.destroy);
 
 routes.get("/app/dashboard", (req, res) => {
   console.log(req.session.user);
   res.render("dashboard");
 });
+
 module.exports = routes;
