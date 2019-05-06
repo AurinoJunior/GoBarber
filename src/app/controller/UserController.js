@@ -1,6 +1,10 @@
 const { User } = require("../models");
 
 class UserController {
+  async index(req, res) {
+    res.render("auth/signup");
+  }
+
   async create(req, res) {
     const { filename } = req.file;
 
