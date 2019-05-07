@@ -1,0 +1,22 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>
+      Agendando Horario
+    </strong>
+
+    <div class="provider">
+      <div>
+        <img src="/files/{{ provider.avatar }}">
+        <strong>
+          {{provider.name}}
+        </strong>
+      </div>
+    </div>
+
+    <form action="/app/appointments/new/{{provider.id}}" method="post">
+      <input class="flatpickr" type="text" placeholder="Escolha uma data"/>
+    </form>
+  </div>
+{% endblock %}
