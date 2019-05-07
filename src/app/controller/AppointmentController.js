@@ -10,6 +10,7 @@ class AppointmentController {
   async create(req, res) {
     const { id } = req.session.user;
     const { provider } = req.params;
+    console.log("Vishiiiiii", req.body);
     const { date } = req.body;
 
     await Appointment.create({
