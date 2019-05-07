@@ -18,12 +18,7 @@
     <form action="/app/appointments/new/{{provider.id}}" method="post">
       <input class="flatpickr" type="text" placeholder="Escolha uma data"/>
 
-      <div id="hours">
-        <label>
-          <input type="radio"/>
-          12:00
-        </label>
-      </div>
+      <div id="hours"></div>
 
       <button type="submit">Agendar</button>
     </form>
@@ -32,7 +27,10 @@
   <script type="text/javascript">
     flatpickr('.flatpickr', {
       minDate: new Date(),
-      dateFormat: 'd/m/Y'
+      dateFormat: 'd/m/Y',
+      onChange: function (date) {
+        fetch(`/app/available/{{ provider.id }}?date=${date[0].getTime()}`)
+      }
     })
   </script>
 {% endblock %}
