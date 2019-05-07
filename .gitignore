@@ -3,3 +3,4 @@ package-json.lock
 postgreSQL_data
 tmp/uploads/*
 !tmp/uploads/.gitkeep
+tmp/sessions.db
