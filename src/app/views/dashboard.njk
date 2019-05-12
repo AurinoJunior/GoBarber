@@ -8,6 +8,8 @@
     </strong>
     <p>Faça um agendamento com um profissional abaixo</p>
 
+    {% include "_partials/flash.njk" %}
+
     <ul class="providers">
       {% for provider in providers %}
         <li class="provider">
@@ -23,4 +25,21 @@
     </ul>
     <a class="logout" href="/app/logout">Sair</a>
   </div>
+  <script type="text/javascript">
+    let removerAlerta = async () => {
+      let alert = document.querySelector('.alert')
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      await sleep(7000)
+      if (alert) {
+        alert
+          .parentNode
+          .removeChild(alert);
+      }
+    }
+    removerAlerta()
+  </script>
 {% endblock %}

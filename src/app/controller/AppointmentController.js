@@ -10,14 +10,19 @@ class AppointmentController {
   async create(req, res) {
     const { id } = req.session.user;
     const { provider } = req.params;
-    console.log("Vishiiiiii", req.body);
     const { date } = req.body;
 
-    await Appointment.create({
-      userId: id,
-      providerId: provider,
-      date
-    });
+    try {
+      await Appointment.create({
+        userId: id,
+        providerId: provider,
+        date
+      });
+      req.flash("success", "Agendamento confirmado");
+    } catch (e) {
+      console.log("error:", e);
+      req.flash("error", "Não foi possivel agendar, tente novamente");
+    }
 
     return res.redirect("/app/dashboard");
   }
