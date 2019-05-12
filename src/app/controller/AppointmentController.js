@@ -19,8 +19,8 @@ class AppointmentController {
         date
       });
       req.flash("success", "Agendamento confirmado");
-    } catch (e) {
-      console.log("error:", e);
+    } catch (error) {
+      console.log(error);
       req.flash("error", "Não foi possivel agendar, tente novamente");
     }
 
