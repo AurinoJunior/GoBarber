@@ -10,7 +10,7 @@ class UserController {
 
     try {
       await User.create({ ...req.body, avatar: filename });
-      req.flash("success", "Conta criado com succeso!");
+      req.flash("success", "Conta criada com succeso!");
     } catch (error) {
       console.log(error);
       req.flash("error", "Não foi possivel criar sua conta, tente novamente!");
