@@ -17,4 +17,21 @@
       Criar uma conta grátis.
     </a>
   </form>
+  <script type="text/javascript">
+    let removerAlerta = async () => {
+      let alert = document.querySelector('.alert')
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      await sleep(7000)
+      if (alert) {
+        alert
+          .parentNode
+          .removeChild(alert);
+      }
+    }
+    removerAlerta()
+  </script>
 {% endblock %}

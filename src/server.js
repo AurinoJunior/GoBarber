@@ -4,6 +4,7 @@ const path = require("path");
 const session = require("express-session");
 const lokiStore = require("connect-loki")(session);
 const flash = require("connect-flash");
+const dateFilter = require("nunjucks-date-filter");
 
 class App {
   constructor() {
@@ -32,11 +33,13 @@ class App {
   }
 
   views() {
-    nunjucks.configure(path.resolve(__dirname, "app", "views"), {
+    const env = nunjucks.configure(path.resolve(__dirname, "app", "views"), {
       watch: this.isDev,
       express: this.express,
       autoescape: true
     });
+
+    env.addFilter("date", dateFilter);
 
     // Pasta publica para arquivos estaticos
     this.express.use(express.static(path.resolve(__dirname, "public")));

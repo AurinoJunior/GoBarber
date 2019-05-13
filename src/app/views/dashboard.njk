@@ -8,6 +8,8 @@
     </strong>
     <p>Faça um agendamento com um profissional abaixo</p>
 
+    {% include "_partials/flash.njk" %}
+
     <ul class="providers">
       {% for provider in providers %}
         <li class="provider">
@@ -17,10 +19,48 @@
               {{ provider.name }}
             </strong>
           </div>
-          <a href="">+</a>
+          <a href="/app/appointments/new/{{ provider.id }}">+</a>
         </li>
       {% endfor %}
     </ul>
     <a class="logout" href="/app/logout">Sair</a>
   </div>
+
+  {% if user.provider === true %}
+    <div class="content">
+      <strong>Seus agendamentos</strong>
+      <p>Agendamentos que você tem para hoje:</p>
+
+      <ul class="providers">
+        {% for appointment in appointments %}
+          <li class="provider">
+            <div>
+              <img src="/files/{{ appointment.User.avatar }}"/>
+              <strong>{{ appointment.User.name }}
+                <br>
+                {{ appointment.date | date('llll') }}</strong>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <script type="text/javascript">
+    let removerAlerta = async () => {
+      let alert = document.querySelector('.alert')
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      await sleep(7000)
+      if (alert) {
+        alert
+          .parentNode
+          .removeChild(alert);
+      }
+    }
+    removerAlerta()
+  </script>
 {% endblock %}
