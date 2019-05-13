@@ -4,12 +4,10 @@ class SessionController {
   async login(req, res) {
     const { email, password } = req.body;
 
-    console.log(req.body);
-
     const user = await User.findOne({ where: { email } });
 
     if (!user || !(await user.checkPassword(password))) {
-      console.log("Usuario ou senha incorretos");
+      req.flash("error", "Usuario ou senha incorretos");
       return res.redirect("/");
     }
 
@@ -18,13 +16,12 @@ class SessionController {
     return res.redirect("/app/dashboard");
   }
 
-  destroy (req, res) {
+  destroy(req, res) {
     req.session.destroy(() => {
-      res.clearCookie('root')
-      return res.redirect('/')
-    })
+      res.clearCookie("root");
+      return res.redirect("/");
+    });
   }
-
 }
 
 module.exports = new SessionController();

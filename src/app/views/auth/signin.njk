@@ -4,6 +4,8 @@
 
     <img src="/images/logo.svg" height="42"/>
 
+    {% include "_partials/flash.njk" %}
+
     <input type="email" name="email" placeholder="Digite seu e-mail" required="required"/>
     <input type="password" name="password" placeholder="Escolha sua senha" required="required"/>
 
@@ -15,4 +17,21 @@
       Criar uma conta grátis.
     </a>
   </form>
+  <script type="text/javascript">
+    let removerAlerta = async () => {
+      let alert = document.querySelector('.alert')
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      await sleep(7000)
+      if (alert) {
+        alert
+          .parentNode
+          .removeChild(alert);
+      }
+    }
+    removerAlerta()
+  </script>
 {% endblock %}
