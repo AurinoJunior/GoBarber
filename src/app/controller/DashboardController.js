@@ -13,10 +13,10 @@ class DashboardController {
         date: {
           [Op.between]: [
             moment()
-              .startOf("week")
+              .startOf("day")
               .format(),
             moment()
-              .endOf("week")
+              .endOf("day")
               .format()
           ]
         }
