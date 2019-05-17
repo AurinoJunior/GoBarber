@@ -4,15 +4,16 @@ const upload = require("multer")(multerConfig); // Criando instancia a partir da
 
 const routes = express.Router();
 
-const UserController = require("./app/controller/UserController");
-const SessionController = require("./app/controller/SessionController");
-const DashboardController = require("./app/controller/DashboardController");
-const FileController = require("./app/controller/FileController");
-const AppointmentController = require("./app/controller/AppointmentController");
-const AvailableController = require("./app/controller/AvailableController");
+const {
+  UserController,
+  SessionController,
+  DashboardController,
+  FileController,
+  AppointmentController,
+  AvailableController
+} = require("./app/controller");
 
-const authMiddleware = require("./app/middlewares/auth");
-const guestMiddleware = require("./app/middlewares/guest");
+const { authMiddleware, guestMiddleware } = require("./app/middlewares");
 
 // Middleware para capturar menssagens flash e enviar ao locals para poder usar nos templates
 routes.use((req, res, next) => {

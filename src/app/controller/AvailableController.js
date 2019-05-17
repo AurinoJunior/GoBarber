@@ -52,4 +52,4 @@ class AvailableController {
   }
 }
 
-module.exports = new AvailableController();
+module.exports = AvailableController;
