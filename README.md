@@ -1,36 +1,21 @@
-# Project Title
+# GoBarber
 
-One Paragraph of project description goes here
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Application created with nodejs and express for control scheduler barber shop.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+- [Docker](https://www.docker.com/get-started).
+- [Docker compose](https://docs.docker.com/compose/install/).
 
-```
-Give examples
-```
+## Getting Started
 
-### Installing
+1. Run command `docker build -t gobarber .` to build the image and install application dependencies.
 
-A step by step series of examples that tell you how to get a development env running
+2. Run command `docker-composer down && docker-compose up` to up the containers of application and database.
 
-Say what the step will be
+3. Enter in the application container with the command `docker exec -it application ash`
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+4. In the container application run command `npx sequelize db:migrate` to migrate database
 
 ## Running the tests
 
@@ -61,24 +46,6 @@ Add additional notes about how to deploy this on a live system
 - [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 - [Maven](https://maven.apache.org/) - Dependency Management
 - [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 

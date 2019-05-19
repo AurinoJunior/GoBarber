@@ -38,7 +38,7 @@
               <img src="/files/{{ appointment.User.avatar }}"/>
               <strong>{{ appointment.User.name }}
                 <br>
-                {{ appointment.date | date('llll') }}</strong>
+                {{ appointment.date | date('HH:mm') }}</strong>
             </div>
           </li>
         {% endfor %}
